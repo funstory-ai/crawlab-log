@@ -36,7 +36,8 @@ type SeaweedFsLogDriver struct {
 }
 
 type SeaweedFsLogDriverOptions struct {
-	BaseDir          string // base directory path for log files, default: "logs"
+	url              string  // seaweedfs url
+	BaseDir          string  // base directory path for log files, default: "logs"
 	Prefix           string // directory prefix, default: "test"
 	Size             int64  // number of lines per log chunk file, default: 1000
 	Padding          int64  // log file name padding, default: 8
@@ -92,8 +93,9 @@ func NewSeaweedFsLogDriver(options *SeaweedFsLogDriverOptions) (driver Driver, e
 	}
 	options.FlushWaitSeconds = flushWaitSeconds
 
+
 	// fs manager
-	manager, err := fs.NewSeaweedFsManager()
+	manager, err := fs.NewSeaweedFsManager(fs.WithFilerUrl(options.url))
 	if err != nil {
 		return driver, err
 	}
