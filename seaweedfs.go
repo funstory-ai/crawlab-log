@@ -95,7 +95,7 @@ func NewSeaweedFsLogDriver(options *SeaweedFsLogDriverOptions) (driver Driver, e
 
 
 	// fs manager
-	manager, err := fs.NewSeaweedFsManager(fs.WithFilerUrl(options.url))
+	manager, err := fs.NewSeaweedFsManager(fs.WithFilerUrl(options.Url))
 	if err != nil {
 		return driver, err
 	}
