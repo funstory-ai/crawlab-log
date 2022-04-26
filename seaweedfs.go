@@ -36,7 +36,7 @@ type SeaweedFsLogDriver struct {
 }
 
 type SeaweedFsLogDriverOptions struct {
-	url              string  // seaweedfs url
+	Url              string  // seaweedfs url
 	BaseDir          string  // base directory path for log files, default: "logs"
 	Prefix           string // directory prefix, default: "test"
 	Size             int64  // number of lines per log chunk file, default: 1000
